@@ -12,7 +12,12 @@ public class UsersTest extends LoginTest {
     AdminPage adminPage = new AdminPage();
     AddUserPage addUserPage = new AddUserPage();
 
-    @Test (priority = 1)
+    String employeeName = "Ananya Dash";
+    String employeeUserName = "AnanyaDash12";
+    String userRole = "Admin";
+    String employeeStatus = "Disabled";
+
+    @Test
     public void adminShouldAddUserSuccessfully() throws InterruptedException {
         /*Login to Application
         	click On "Admin" Tab
@@ -33,17 +38,17 @@ public class UsersTest extends LoginTest {
         adminPage.verifyTheSystemUsersWelcomeText();
         adminPage.clickOnTheAddButton();
         adminPage.verifyTheAddUserText();
-        addUserPage.selectUserRoleAsAdmin("Admin");
-        addUserPage.putEmployeeNameInTheEmployeeNameField("Ananya Dash");
-        addUserPage.putUserNameInTheUserNameField("AnayaDash11");
-        addUserPage.selectStatusAsDisabled("Disabled");
+        addUserPage.selectUserRoleAsAdmin(userRole);
+        addUserPage.putEmployeeNameInTheEmployeeNameField(employeeName);
+        addUserPage.putUserNameInTheUserNameField(employeeUserName);
+        addUserPage.selectStatusAsDisabled(employeeStatus);
         addUserPage.enterPasswordInPasswordField();
         addUserPage.enterConfirmationPasswordInTheConfirmPasswordField();
         addUserPage.clickOnSaveButton();
         adminPage.verifyTheSuccessFullySavedMessage();
     }
 
-    @Test (priority = 2)
+    @Test
     public void searchTheUserCreatedAndVerifyIt() {
 
         //Login to Application
@@ -53,19 +58,19 @@ public class UsersTest extends LoginTest {
         //Verify "System Users" Text
         adminPage.verifyTheSystemUsersWelcomeText();
         //Enter Username
-        adminPage.enterUserNameInTheUserNameField("AnayaDash11");
+        adminPage.enterUserNameInTheUserNameField(employeeUserName);
         //Select User Role
-        adminPage.selectUserRole("Admin");
+        adminPage.selectUserRole(userRole);
         //Select Status
-        adminPage.selectUserStatus("Disabled");
+        adminPage.selectUserStatus(employeeStatus);
         //Click on "Search" Button
         adminPage.clickOnSearchButton();
         //Verify the User should be in Result list.
-        adminPage.verifyUsersNameIsInTheResultsTable("AnayaDash11");
+        adminPage.verifyUsersNameIsInTheResultsTable(employeeUserName);
 
     }
 
-    @Test (priority = 3)
+    @Test
     public void verifyThatAdminShouldDeleteTheUserSuccessfully() {
 
         //Login to Application
@@ -75,17 +80,17 @@ public class UsersTest extends LoginTest {
         //Verify "System Users" Text
         adminPage.verifyTheSystemUsersWelcomeText();
         //Enter Username
-        adminPage.enterUserNameInTheUserNameField("AnayaDash11");
+        adminPage.enterUserNameInTheUserNameField(employeeUserName);
         //Select User Role
-        adminPage.selectUserRole("Admin");
-        //Select Satatus
-        adminPage.selectUserStatus("Disabled");
+        adminPage.selectUserRole(userRole);
+        //Select Status
+        adminPage.selectUserStatus(employeeStatus);
         //Click on "Search" Button
         adminPage.clickOnSearchButton();
         //Verify the User should be in Result list.
-        adminPage.verifyUsersNameIsInTheResultsTable("AnayaDash11");
+        adminPage.verifyUsersNameIsInTheResultsTable(userRole);
         //Click on Check box
-        //****adminPage.clickOnTheCheckBox();
+        adminPage.clickOnTheCheckBox();
         //Click on Delete Button
         adminPage.clickOnDeleteButton();
         //Popup will display
@@ -96,7 +101,7 @@ public class UsersTest extends LoginTest {
 
     }
 
-    @Test (priority = 4)
+    @Test
     public void searchTheDeletedUserAndVerifyTheMessageNoRecordFound() {
         //Login to Application
         verifyUserShouldLoginSuccessfully();
@@ -105,11 +110,11 @@ public class UsersTest extends LoginTest {
         //Verify "System Users" Text
         adminPage.verifyTheSystemUsersWelcomeText();
         //Enter Username
-        adminPage.enterUserNameInTheUserNameField("AnayaDash11");
+        adminPage.enterUserNameInTheUserNameField(employeeUserName);
         //Select User Role
-        adminPage.selectUserRole("Admin");
-        //Select Satatus
-        adminPage.selectUserStatus("Disabled");
+        adminPage.selectUserRole(userRole);
+        //Select Status
+        adminPage.selectUserStatus(employeeStatus);
         //Click on "Search" Button
         adminPage.clickOnSearchButton();
         //verify message "No Records Found"

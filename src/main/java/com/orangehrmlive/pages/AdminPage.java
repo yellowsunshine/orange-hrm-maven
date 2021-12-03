@@ -21,7 +21,7 @@ public class AdminPage extends Utility {
     By status = By.xpath("//select[@id='searchSystemUser_status']");
     By searchButton = By.xpath("//input[@id='searchBtn']");
     By anayaDash9 = By.partialLinkText("AnayaDas");
-    By checkBox = By.id("ohrmList_chkSelectRecord_37");
+    By checkBox = By.xpath("//tr[@class='odd']//td//input[@type='checkbox' and @name='chkSelectRow[]']");
     By deleteButton = By.xpath("//input[@id='btnDelete']");
 
 
